@@ -66,6 +66,15 @@ const loadPapersData = async () => {
       allPapers.value = [...allPapers.value, ...papersData2];
     }
     
+    // Load third JSON file (papers_zh.json - array format)
+    const response3 = await fetch('/paper/data/papers_iccv_eccv.json');
+    const papersData3 = await response3.json();
+    
+    // Process third JSON file
+    if (Array.isArray(papersData3)) {
+      allPapers.value = [...allPapers.value, ...papersData3];
+    }
+    
     console.log('Total papers loaded:', allPapers.value.length);
   } catch (error) {
     console.error('Failed to load papers data:', error);
